@@ -5,12 +5,19 @@
  * All rights reserved.
  * https://raw.github.com/gdsmith/jquery-easing/master/LICENSE
 */
-
+//import jQuery from 'jquery';
+import $ from 'jquery';
+var jQuery = require('jquery');
+require('jquery.easing')(jQuery);
 (function (factory) {
 	if (typeof define === "function" && define.amd) {
-		define(['jquery'], function ($) {
+		debugger;
+		/*define(['jquery'], function ($) {
 			return factory($);
-		});
+		});*/
+		define(['jquery', 'jquery.easing'], function (jQuery, easing) {
+			easing(jQuery)
+		  });
 	} else if (typeof module === "object" && typeof module.exports === "object") {
 		exports = factory(require('jquery'));
 	} else {

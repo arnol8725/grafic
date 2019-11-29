@@ -1,15 +1,14 @@
 import React, {Fragment} from 'react';
 import logo from './logo.svg';
-//import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../src/css/sb-admin-2.min.css';
-import '../src/vendor/fontawesome-free/css/all.min.css';
 import { Chart } from 'react-charts';
-/*import '../src/js/demo/chart-area-demo';
-import '../src/js/demo/chart-bar-demo';
-import '../src/js/demo/chart-pie-demo';
-import '../src/js/demo/datatables-demo';*/
+import $ from "jquery";
+import 'bootstrap';
+import './css/sb-admin-2.min.css';
+import '../src/vendor/fontawesome-free/css/all.min.css';
+import './js/sb-admin-2.js';
+
 function App() {
+
 
   const data = React.useMemo(
     () => [
@@ -37,6 +36,17 @@ function App() {
     []
   )
 
+  const tocar = (e) =>{
+    //e.preventDefault();
+    debugger;
+    $("body").toggleClass("sidebar-toggled");      
+    $(".sidebar").toggleClass("toggled");
+    if ($(".sidebar").hasClass("toggled")) {
+      $('.sidebar .collapse').collapse('hide');
+    };
+  
+  }
+
   return (
 
 
@@ -55,7 +65,7 @@ function App() {
                 <div className="sidebar-brand-icon rotate-n-15">
                   <i className="fas fa-laugh-wink"></i>
                 </div>
-                <div className="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div className="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>  
               </a>
 
               
@@ -155,7 +165,7 @@ function App() {
 
               
               <div className="text-center d-none d-md-inline">
-                <button className="rounded-circle border-0" id="sidebarToggle"></button>
+                <button className="rounded-circle border-0 " key="sidebarToggle" onClick={(e) => tocar()} id="sidebarToggle"></button>
               </div>
 
             </ul>
@@ -171,7 +181,7 @@ function App() {
                 <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                   
-                  <button id="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3">
+                  <button id="sidebarToggleTop" key="sidebarToggleTop" className="btn btn-link d-md-none rounded-circle mr-3 sidebarToggleTop">
                     <i className="fa fa-bars"></i>
                   </button>
 
